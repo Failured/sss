@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{
+     color: #333333;
+    
+    }
+.cw{   
+    width: 850px;
+    height: 160px;
+     color: #333333;
+ 
+}.ct{
+    
+    width: 850px;
+    height: 120px;
+     color: #333333;
+}.cy{
+    float: left;
+    width: 120px;
+    height: 90px;
+    margin-top: 15px;
+     color: #333333;
+ 
+}.col{ float: left;
+    width: 120px;
+    height:120px;
+    margin-left: 10px;
+     color: #333333;
+    
+}.cyt{ 
+    display: block;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    font-size: 22px;
+    margin-left: -35px;
+    text-align: center; 
+    font-weight: bold;
+}
+
+.copq{ 
+    float: left;
+    width: 120px;
+    height: 90px;
+    margin-left: -35px;
+    margin-top: 15px;
+}.ccc{
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin-top: 21px;
+    margin-left: 6px;
+    text-align: center;
+    line-height: 60px;
+   
+}
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <div class="cw">
+             <div class="ct">
+                 <div class="ccc">
+                     win
+                 </div>
+                <div class="cy">
+                    <img th:src="@{${teams.Winningteam}}" alt="widt" width="120px" height="90px">
+                </div>
+                <div class="col">
+                    <span class="cyt"  th:text="${teams.score}">
+                          3:1
+                    </span> 
+                </div>
+                <div class="copq">
+                        <img th:src="@{${teams.failteam}}" alt="widt" width="120px" height="90px">
+                    </div>
+             </div>
+            </div>
+    </div>
+</body>
+</html>

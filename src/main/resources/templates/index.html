@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript"> 
+$(document).ready(function() {
+     $(".panel").fadeOut(0);
+     $(".io").click(function(event) {
+    	 event.preventDefault();
+    	  var id = $(this).attr("href");
+    	  $.ajax({
+  			 type :'POST',
+  			url:"/sule",
+  			data:{"id":id},
+  			success : function(data){
+  				 $(".panel").html(data)
+  	            }
+  		})
+          $(".panel").not($(this).next()).slideUp('fast');
+          $(this).next().slideToggle();
+         
+     });
+});
+</script>
+<style>
+a{
+ color: #333;
+}
+body {
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.cent {
+    width: 100%;
+    height: 40px;
+    border: 1px solid;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+.c1 {
+    width: 850px;
+    height: 600px;
+
+    margin: 0 auto;
+    ;
+}
+
+.c2 {
+    width: 850px;
+    height: 100px;
+
+}
+
+.span {
+    float: left;
+    width: 142px;
+    height: 100px;
+    background: url(/img/1.png) no-repeat center top;
+    background-size: 100px;
+}
+
+.c22 {
+    width: 180px;
+    height: 20px;
+    float: left;
+
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.c23 {
+    float: left;
+    width: 180px;
+    height: 20px;
+
+    margin-top: 45px;
+    margin-left: -182px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.c3 {
+    width: 850px;
+    height: 550px;
+
+}
+
+.c31 {
+    width: 850px;
+    height: 160px;
+
+}
+
+.c32 {
+float: left;
+    width: 850px;
+    height: 36px;
+    font-size: .12rem;
+    line-height: .26rem;
+    text-align: center;
+    background-color: #f5f5f5;
+    line-height: 36px;
+}
+
+.c33 {
+    width: 850px;
+    height: 120px;
+
+}
+
+.c34 {
+    float: left;
+    width: 120px;
+    height: 90px;
+    margin-left: 55px;
+    margin-top: 15px;
+}
+
+.c35 {
+    float: left;
+    width: 120px;
+    height: 120px;
+
+    margin-left: 185px;
+}
+
+.c36 {
+    display: block;
+    width: 120px;
+    height: 18px;
+    line-height: 25px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.c37 {
+    display: block;
+    width: 120px;
+    height: 18px;
+    line-height: 14px;
+    font-size: 16px;
+    text-align: center;
+
+    font-weight: bold;
+    margin-top: 80px;
+}
+
+.c38 {
+    float: left;
+    width: 120px;
+    height: 90px;
+    margin-left: 165px;
+    margin-top: 15px;
+}
+.panel{
+
+  color: #eee;
+  width: 850px;
+  height: 160px;
+  float: left;
+  border: 1px solid;
+ 
+}
+</style>
+
+<body>
+    <div class="cent">
+        xx新闻
+    </div>
+    <div class="c1">
+        <div class="c2">
+            <div class="span">
+            </div>
+            <div class="c22">
+                英雄联盟全球总决赛
+            </div>
+            <div class="c23">
+                2019.10.02-2019.11.10
+            </div>
+        </div>
+        <div class="c3">
+        
+            <div class="c31"  th:each="teams:${team}">
+            
+                <div class="c32" th:text="${teams.data}">
+                    11-02 周六
+                </div>
+                <a th:href="${teams.id}"
+            							class="io">
+                <div class="c33">
+                    <div class="c34">
+                      <input type="hidden" th:value="${teams.id}" id="lo">
+                        <img th:src="@{${teams.team1}}" alt="widt" width="120px" height="90px">
+                    </div>
+                    <div class="c35">
+                        <span class="c36" th:text="${teams.teamname}">
+                            S9半决赛
+                        </span>
+                        <span class="c37">
+                            比赛结束
+                        </span>
+                    </div>
+                    <div class="c38">
+                        <img th:src="@{${teams.team2}}" alt="widt" width="120px" height="90px">
+                    </div>
+                </div>
+                  </a>
+                 <div class="panel">
+               </div>
+            </div>
+          
+        </div>
+       
+    </div>
+</body>
+
+</html>
